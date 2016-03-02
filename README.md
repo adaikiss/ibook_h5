@@ -13,6 +13,7 @@ ProxyPassReverse /bookbar http://[bookbar-server]
 
 run
 ```bash```
+cnpm install
 webpack-dev-server -d --hot --content-base ./
 ``````
 
