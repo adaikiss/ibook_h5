@@ -12,14 +12,10 @@ export default class SubjectBook extends React.Component{
     }
 
     formatTags(tags){
-        var result = [];
         if(tags == null){
-            return result;
+            return [];
         }
-        $.trim(tags).split(/[;,:；，；\s]+/g).map(function(item, index){
-            result.push(<span>{item}</span>);
-        });
-        return result;
+        return $.trim(tags).split(/[;,:；，；\s]+/g);
     }
 
     render(){
@@ -70,7 +66,13 @@ export default class SubjectBook extends React.Component{
      * @param bookStyle
      */
     renderStyle10(data, bookStyle){
-        //TODO://
+        var tags = [];
+        this.formatTags(data.keywords).map(function(item, index){
+            if(index > 2){
+                return false;
+            }
+            tags.push(<div key={index}><span key={index}>{item}</span></div>);
+        });
         return (
             <div className="book clearfix">
                 <div className="clearfix">
@@ -80,9 +82,9 @@ export default class SubjectBook extends React.Component{
                         {this.getMark(data)}
                     </p>
                     <p className="info">{data.status} | {data.author}</p>
-                    {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
                     <p className="intro line_2">{this.getIntro(data)}</p>
                 </div>
+                <div className="info tags">{tags}</div>
             </div>
         )
     }
@@ -294,6 +296,13 @@ export default class SubjectBook extends React.Component{
      * @returns {XML}
      */
     renderStyle29(data, bookStyle){
+        var tags = [];
+        this.formatTags(data.keywords).map(function(item, index){
+            if(index > 2){
+                return false;
+            }
+            tags.push(<span key={index}>{item}</span>);
+        });
         return (
             <div className="book clearfix">
                 <div className="clearfix">
@@ -303,7 +312,7 @@ export default class SubjectBook extends React.Component{
                         {this.getMark(data)}
                     </p>
                     <p className="info">{data.status} | {data.author}</p>
-                    <p className="info tags">{this.formatTags(data.keywords)}</p>
+                    <p className="info tags">{tags}</p>
                     <p className="intro line_2">{this.getIntro(data)}</p>
                 </div>
             </div>
