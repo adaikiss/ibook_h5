@@ -12,7 +12,14 @@ export default class SubjectBook extends React.Component{
     }
 
     formatTags(tags){
-        return tags.replace(/[;,:；，；\s]+/g, ' ');
+        var result = [];
+        if(tags == null){
+            return result;
+        }
+        $.trim(tags).split(/[;,:；，；\s]+/g).map(function(item, index){
+            result.push(<span>{item}</span>);
+        });
+        return result;
     }
 
     render(){
@@ -296,7 +303,7 @@ export default class SubjectBook extends React.Component{
                         {this.getMark(data)}
                     </p>
                     <p className="info">{data.status} | {data.author}</p>
-                    <p className="info">{this.formatTags(data.keywords)}</p>
+                    <p className="info tags">{this.formatTags(data.keywords)}</p>
                     <p className="intro line_2">{this.getIntro(data)}</p>
                 </div>
             </div>
