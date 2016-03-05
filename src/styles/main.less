@@ -47,17 +47,17 @@ img{
 *, *::after, *::before {
   box-sizing: border-box;
 }
-*{
-  line-height:1em;
-}
+//*{
+//  line-height:1em;
+//}
 p{
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
-  span{
-    line-height:inherit;
-  }
+  //span{
+  //  line-height:inherit;
+  //}
 }
 .clearfix{
   &:before,&:after{
@@ -355,6 +355,70 @@ p{
   padding:0.5em 0;
 }
 
+.star_rank{
+  height:100%;
+  display:block;
+  .clearfix;
+  >span{
+    display:block;
+    width:@label_text_small * 47/35 * 1.1;
+    height:@label_text_small * 1.1;
+    float:left;
+    background:url("../images/icon_bookcase_star_off.png") no-repeat scroll transparent;
+    background-size:cover;
+  }
+  &.star_rank_5{
+    >span:nth-child(1){
+      background-image:url("../images/icon_bookcase_star_half.png");
+    }
+  }
+  &.star_rank_10,&.star_rank_15,&.star_rank_20,&.star_rank_25,&.star_rank_30,&.star_rank_35,&.star_rank_40,&.star_rank_45,&.star_rank_50{
+    >span:nth-child(1){
+      background-image:url("../images/icon_bookcase_star_on.png");
+    }
+   }
+  &.star_rank_15{
+    >span:nth-child(2){
+      background-image:url("../images/icon_bookcase_star_half.png");
+    }
+  }
+  &.star_rank_20,&.star_rank_25,&.star_rank_30,&.star_rank_35,&.star_rank_40,&.star_rank_45,&.star_rank_50{
+    >span:nth-child(2){
+      background-image:url("../images/icon_bookcase_star_on.png");
+    }
+  }
+  &.star_rank_25{
+    >span:nth-child(3){
+      background-image:url("../images/icon_bookcase_star_half.png");
+    }
+  }
+  &.star_rank_30,&.star_rank_35,&.star_rank_40,&.star_rank_45,&.star_rank_50{
+    >span:nth-child(3){
+      background-image:url("../images/icon_bookcase_star_on.png");
+    }
+  }
+  &.star_rank_35{
+    >span:nth-child(4){
+      background-image:url("../images/icon_bookcase_star_half.png");
+    }
+  }
+  &.star_rank_40,&.star_rank_45,&.star_rank_50{
+    >span:nth-child(4){
+      background-image:url("../images/icon_bookcase_star_on.png");
+    }
+  }
+  &.star_rank_45{
+    >span:nth-child(5){
+      background-image:url("../images/icon_bookcase_star_half.png");
+    }
+  }
+  &.star_rank_50{
+    >span:nth-child(5){
+      background-image:url("../images/icon_bookcase_star_on.png");
+    }
+  }
+}
+
 .link_tag{
   font-size:@label_text;
 }
@@ -411,10 +475,10 @@ p{
       }
       .dynamic{
         float:right;
-        font-size:13px;
+        .subject_content_font;
       }
     }
-    >div>.info{
+    .info{
       margin-top:0.5em;
     }
     .intro{
@@ -423,7 +487,7 @@ p{
     }
     .data{
       float:right;
-      font-size:12px;
+      .subject_content_font;
       font-weight:normal;
     }
     .score{
@@ -446,7 +510,7 @@ p{
 
     .dynamic{
       display:block;
-      color: #ff5f05 !important;
+      color:@remark_color_three !important;
     }
     .mark{
       display:inline-block;
@@ -572,6 +636,9 @@ p{
 
 .subject_block_10{
   .book{
+    .name{
+      margin-top:1em;
+    }
     .tags{
       .clearfix;
       margin-top:0.6rem;
@@ -599,6 +666,22 @@ p{
         }
       }
     }
+  }
+}
+
+.subject_block_11{
+  .book{
+    >div{
+      display:flex;
+      .cover{
+        flex:1 auto;
+      }
+      .info_block{
+        flex:1 100%;
+      }
+    }
+  }
+  .star_rank{
   }
 }
 

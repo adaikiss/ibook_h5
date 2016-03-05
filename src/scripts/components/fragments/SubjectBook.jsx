@@ -77,17 +77,20 @@ export default class SubjectBook extends React.Component{
             <div className="book clearfix">
                 <div className="clearfix">
                     {this.getBookCover(data)}
-                    <p className="name">
-                        {this.getBookName(data)}
-                        {this.getMark(data)}
-                    </p>
-                    <p className="info">{data.status} | {data.author}</p>
-                    <p className="intro line_2">{this.getIntro(data)}</p>
+                    <div className="info_block">
+                        <p className="name">
+                            {this.getBookName(data)}
+                            {this.getMark(data)}
+                        </p>
+                        <p className="info">{data.status} | {data.author}</p>
+                        <p className="intro line_2">{this.getIntro(data)}</p>
+                    </div>
                 </div>
                 <div className="info tags">{tags}</div>
             </div>
         )
     }
+
 
     /**
      * 书-封面评分
@@ -95,18 +98,29 @@ export default class SubjectBook extends React.Component{
      * @param bookStyle
      */
     renderStyle11(data, bookStyle){
-        //TODO://
+        var rank = parseInt((data.score * 10));
+        var star = (
+            <span className={"star_rank" + ' star_rank_' + rank}>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        );
         return (
             <div className="book clearfix">
                 <div className="clearfix">
                     {this.getBookCover(data)}
-                    <p className="name">
+                    <div className="info_block">
+                        <p className="name">
                         {this.getBookName(data)}
                         {this.getMark(data)}
-                    </p>
-                    <p className="info">{data.status} | {data.author}</p>
-                    {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
-                    <p className="intro line_2">{this.getIntro(data)}</p>
+                        </p>
+                        <p className="info">{data.status} | {data.author}</p>
+                        <p className="info">{star}</p>
+                        <p className="intro line_2">{this.getIntro(data)}</p>
+                    </div>
                 </div>
             </div>
         )
@@ -127,13 +141,15 @@ export default class SubjectBook extends React.Component{
             <div className="book clearfix">
                 <div className="clearfix">
                     {this.getBookCover(data)}
-                    <p className="name">
-                        {this.getBookName(data)}
-                        {this.getMark(data)}
-                    </p>
-                    <p className="info">{data.status} | {data.author}</p>
-                    {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
-                    <p className="intro line_2">{this.getIntro(data)}</p>
+                    <div className="info_block">
+                        <p className="name">
+                            {this.getBookName(data)}
+                            {this.getMark(data)}
+                        </p>
+                        <p className="info">{data.status} | {data.author}</p>
+                        {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
+                        <p className="intro line_2">{this.getIntro(data)}</p>
+                    </div>
                 </div>
             </div>
         )
@@ -150,13 +166,15 @@ export default class SubjectBook extends React.Component{
             <div className="book clearfix">
                 <div className="clearfix">
                     {this.getBookCover(data)}
-                    <p className="name">
-                        {this.getBookName(data)}
-                        {this.getMark(data)}
-                    </p>
-                    <p className="info">{data.status} | {data.author}</p>
-                    {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
-                    <p className="intro line_2">{this.getIntro(data)}</p>
+                    <div className="info_block">
+                        <p className="name">
+                            {this.getBookName(data)}
+                            {this.getMark(data)}
+                        </p>
+                        <p className="info">{data.status} | {data.author}</p>
+                        {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
+                        <p className="intro line_2">{this.getIntro(data)}</p>
+                    </div>
                 </div>
             </div>
         )
@@ -173,13 +191,15 @@ export default class SubjectBook extends React.Component{
             <div className="book clearfix">
                 <div className="clearfix">
                     {this.getBookCover(data)}
-                    <p className="name">
-                        {this.getBookName(data)}
-                        {this.getMark(data)}
-                    </p>
-                    <p className="info">{data.status} | {data.author}</p>
-                    {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
-                    <p className="intro line_2">{this.getIntro(data)}</p>
+                    <div className="info_block">
+                        <p className="name">
+                            {this.getBookName(data)}
+                            {this.getMark(data)}
+                        </p>
+                        <p className="info">{data.status} | {data.author}</p>
+                        {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
+                        <p className="intro line_2">{this.getIntro(data)}</p>
+                    </div>
                 </div>
             </div>
         )
@@ -220,13 +240,15 @@ export default class SubjectBook extends React.Component{
             <div className="book clearfix">
                 <div className="clearfix">
                     {this.getBookCover(data)}
-                    <p className="name">
-                        {this.getBookName(data)}
-                        {this.getMark(data)}
-                    </p>
-                    <p className="info">{data.status} | {data.author}</p>
-                    {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
-                    <p className="intro line_2">{this.getIntro(data)}</p>
+                    <div className="info_block">
+                        <p className="name">
+                            {this.getBookName(data)}
+                            {this.getMark(data)}
+                        </p>
+                        <p className="info">{data.status} | {data.author}</p>
+                        {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
+                        <p className="intro line_2">{this.getIntro(data)}</p>
+                    </div>
                 </div>
             </div>
         )
@@ -307,13 +329,15 @@ export default class SubjectBook extends React.Component{
             <div className="book clearfix">
                 <div className="clearfix">
                     {this.getBookCover(data)}
-                    <p className="name">
-                        {this.getBookName(data)}
-                        {this.getMark(data)}
-                    </p>
-                    <p className="info">{data.status} | {data.author}</p>
-                    <p className="info tags">{tags}</p>
-                    <p className="intro line_2">{this.getIntro(data)}</p>
+                    <div className="info_block">
+                        <p className="name">
+                            {this.getBookName(data)}
+                            {this.getMark(data)}
+                        </p>
+                        <p className="info">{data.status} | {data.author}</p>
+                        <p className="info tags">{tags}</p>
+                        <p className="intro line_2">{this.getIntro(data)}</p>
+                    </div>
                 </div>
             </div>
         )
@@ -347,13 +371,15 @@ export default class SubjectBook extends React.Component{
             <div className="book clearfix">
                 <div className="clearfix">
                     {this.getBookCover(data)}
-                    <p className="name">
-                        {this.getBookName(data)}
-                        {this.getMark(data)}
-                    </p>
-                    <p className="info">{data.status} | {data.author}</p>
-                    {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
-                    <p className="intro line_2">{this.getIntro(data)}</p>
+                    <div className="info_block">
+                        <p className="name">
+                            {this.getBookName(data)}
+                            {this.getMark(data)}
+                        </p>
+                        <p className="info">{data.status} | {data.author}</p>
+                        {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
+                        <p className="intro line_2">{this.getIntro(data)}</p>
+                    </div>
                 </div>
             </div>
         )
