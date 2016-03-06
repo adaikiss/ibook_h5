@@ -230,7 +230,7 @@ export default class SubjectBlock extends React.Component{
                         <img src={data.cover}/>
                     </div>
                     <div className="info_block">
-                        <p className="title line_1"><span className="topic_type">{data.items[0].typeName}</span>{data.items[0].title}</p>
+                        <p className="title line_1"><span className={"topic_type topic_type_" + data.items[0].type}>{data.items[0].typeName}</span>{data.items[0].title}</p>
                         <p className="inner_hr"></p>
                         <p className="content line_2">{data.items[0].content}</p>
                         <p className="data"><span>{data.items[0].replyCount}</span><span>{data.items[0].upCount}</span></p>

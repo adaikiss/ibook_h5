@@ -301,12 +301,22 @@ p{
     height:100%;
   }
 }
+.circle_subjects{
+  background-color:#f2f2f2;
+}
 
 .subject{
-  padding:0 0.5rem;
+  padding:0.6rem 0.5rem 0.4rem;
+  background-color:#fff;
+  border-bottom:1px solid #ebebeb;
 }
 .subject{
   margin-bottom:1rem;
+}
+.subject_block_container{
+  //&>:first-child{
+  //  margin-top:0;
+  //}
 }
 
 //.subject_title{
@@ -556,6 +566,10 @@ p{
     //overflow: hidden;
     //line-height: 0;
     //font-size: 0;
+    img{
+      border-radius:4px;
+    }
+    overflow:hidden;
 
     img {
       //display:block;
@@ -736,7 +750,7 @@ p{
     p{
       display:inline-block;
       line-height:inherit;
-      padding:0.2em;
+      padding:0 0.2em;
       border: 1px solid currentColor;
       border-top-left-radius:2px;
       border-bottom-left-radius:2px;
@@ -849,7 +863,7 @@ p{
 }
 
 .subject_block_24{
-  margin-top:20px!important;
+  margin-top:0rem!important;
 }
 .subject_block_26{
   .style_book_square;
@@ -894,9 +908,12 @@ p{
 .subject_block_31{
   .style_book_cover_data;
 }
-.subject_block_36 .link_tag p{
-  .oval_tag;
-  .subject_label_font;
+.subject_block_36{
+  padding-bottom:0.6rem;
+  .link_tag p{
+    .oval_tag;
+    .subject_label_font;
+  }
 }
 
 .subject_block_41 {
@@ -988,6 +1005,39 @@ p{
   }
 }
 .subject_block_45{
+  .title{
+    .topic_type{
+      font-size:0.8em;
+      border:1px solid currentColor;
+      margin-right:1em;
+      padding:0 0.2em;
+      border-radius:2px;
+      &.topic_type_2{
+        color:@bookbar_topic_color;
+      }
+      &.topic_type_3{
+        color:@bookbar_topic_color;
+      }
+      &.topic_type_4{
+        color:@bookbar_askbook_color;
+      }
+      &.topic_type_5{
+        color:@bookbar_booklist_color;
+      }
+      &.topic_type_6{
+        color:@bookbar_active_color;
+      }
+      &.topic_type_7{
+        color:@bookbar_bookcomment_color;
+      }
+      &.topic_type_8{
+        color:@bookbar_leitai_color;
+      }
+      &.topic_type_9{
+        color:@bookbar_original_color;
+      }
+    }
+  }
   .data{
     margin-top:0.4em;
     line-height:1em;
