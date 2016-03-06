@@ -99,7 +99,9 @@ p{
 .hr{
   margin:0.5rem 0;
 }
-
+.highlight{
+  color:@remark_color_three!important;
+}
 .subject_label_font{
   font-size:@label_text;
   color:#000;
@@ -564,20 +566,21 @@ p{
       white-space: nowrap;
       text-overflow: ellipsis;
       position:relative;
-      >.dynamic{
+      >.data{
         position:absolute;
         right:0;
         top:0;
+        .subject_content_font;
       }
       margin-top:0.5em;
       .subject_label_font;
       .score{
         float:right;
       }
-      .dynamic{
-        float:right;
-        .subject_content_font;
-      }
+      //.name_data{
+      //  float:right;
+      //
+      //}
     }
     .info{
       margin-top:0.5em;
@@ -586,11 +589,11 @@ p{
       margin-top:1em;
       line-height:1.5em;
     }
-    .data{
-      float:right;
-      .subject_content_font;
-      font-weight:normal;
-    }
+    //.data{
+    //  float:right;
+    //  .subject_content_font;
+    //  font-weight:normal;
+    //}
     .score{
       width:125px;
       vertical-align:top;
@@ -609,10 +612,10 @@ p{
       }
     }
 
-    .dynamic{
-      display:block;
-      color:@remark_color_three !important;
-    }
+    //.dynamic{
+    //  display:block;
+    //  color:@remark_color_three !important;
+    //}
     .mark{
       display:inline-block;
     }
@@ -713,7 +716,7 @@ p{
 
   &.marker{
     position:relative;
-    color:@remark_color_three;
+    .highlight;
     p{
       display:inline-block;
       line-height:inherit;
@@ -793,6 +796,17 @@ p{
   .book{
     .name{
       padding-right:4rem;
+    }
+  }
+}
+.subject_block_16{
+  .style_book_cover_data;
+  .book{
+    .discount_info{
+      white-space: nowrap;
+      >*{
+        margin-right:0.3em;
+      }
     }
   }
 }
