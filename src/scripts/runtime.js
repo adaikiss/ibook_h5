@@ -30,7 +30,7 @@ export default (function(window){
                     return;
                 }
             }
-            if(DATA[api.name]){
+            if(window.DATA && DATA[api.name]){
                 setTimeout(function(){
                     callback(DATA[api.name]);
                 }, 200);
