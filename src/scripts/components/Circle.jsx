@@ -69,15 +69,15 @@ export default (function(){
                 }
             }.bind(this));
         }
-
-        renderData(){
-            var debug = (<div id="debug">
-                <textarea style={{width:'100%'}} onChange={this.renderData.bind(this)}></textarea>
-            </div>);
-            var data = JSON.parse($('#debug textarea').val());
-            console.debug(data);
-            this.setState({data: data.subjects});
-        }
+        //
+        //renderData(){
+        //    var debug = (<div id="debug">
+        //        <textarea style={{width:'100%'}} onChange={this.renderData.bind(this)}></textarea>
+        //    </div>);
+        //    var data = JSON.parse($('#debug textarea').val());
+        //    console.debug(data);
+        //    this.setState({data: data.subjects});
+        //}
 
         render(){
             var scope = this;
@@ -98,7 +98,7 @@ export default (function(){
 
     class CircleSubject extends React.Component{
         render(){
-            var title = ""
+            var title = null;
             if(this.props.data.titleStyle > 0){
                 title = (
                     <div className={"link_tag subject_title"}>
