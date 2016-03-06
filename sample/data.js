@@ -240,6 +240,25 @@ DATA.circleSubjects =
             } ]
         }, {
             "itemType" : 3,
+            "id" : 7025,
+            "name" : "一周热销-都市",
+            "style" : 41,
+            "recommendWords" : "",
+            "cover" : "http://7qndds.com1.z0.glb.clouddn.com/ss_145585570444524",
+            "items" : [ {
+                "itemType" : 5,
+                "mark" : "",
+                "name" : "浅析《完美人生》的情节。",
+                "contentType" : 42,
+                "labelId" : 8898,
+                "image" : "",
+                "replace" : 0,
+                "scale" : 0.0,
+                "newsVersion" : 0,
+                "id" : 26436
+            } ]
+        }, {
+            "itemType" : 3,
             "id" : 2123,
             "name" : "玄幻秘境-九宫格3",
             "style" : 18,

@@ -185,14 +185,11 @@ export default class SubjectBlock extends React.Component{
         return (
             <div className={"subject_block subject_block_" + data.style}>
                 <div className="clearfix">
-                    <div className="cover auto_cover">
-                        <img src={require('../../../images/bookbar_pic_def.png')}/>
-                        <div>
-                            <img src={data.cover}/>
-                        </div>
+                    <div className="cover">
+                        <img src={data.cover}/>
                     </div>
-                    <div>
-                        <p>{data.items[0].name}</p>
+                    <div className="info_block">
+                        <span>{data.items[0].name}</span>
                     </div>
                 </div>
             </div>
@@ -208,13 +205,10 @@ export default class SubjectBlock extends React.Component{
         return (
             <div className={"subject_block subject_block_" + data.style}>
                 <div className="clearfix">
-                    <div className="cover auto_cover">
-                        <img src={require('../../../images/bookbar_pic_def.png')}/>
-                        <div>
-                            <img src={data.cover}/>
-                        </div>
+                    <div className="cover">
+                        <img src={data.cover}/>
                     </div>
-                    <div>
+                    <div className="info_block">
                         <p className="title line_1">{data.items[0].name}</p>
                         <p className="inner_hr"></p>
                         <p className="content line_3">{data.items[1].name}</p>
@@ -232,11 +226,10 @@ export default class SubjectBlock extends React.Component{
         return (
             <div className={"subject_block subject_block_" + data.style}>
                 <div className="clearfix">
-                    <div className="cover auto_cover">
-                        <img src={require('../../../images/bookbar_pic_def.png')}/>
+                    <div className="cover">
                         <img src={data.cover}/>
                     </div>
-                    <div>
+                    <div className="info_block">
                         <p className="title line_1"><span className="topic_type">{data.items[0].typeName}</span>{data.items[0].title}</p>
                         <p className="inner_hr"></p>
                         <p className="content line_2">{data.items[0].content}</p>
