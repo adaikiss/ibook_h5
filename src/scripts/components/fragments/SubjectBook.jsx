@@ -49,8 +49,7 @@ export default class SubjectBook extends React.Component{
 
     getBookCover(data){
         return (
-            <div className="book_cover auto_cover">
-                <img src={defaultThumb}/>
+            <div className="book_cover">
                 <img src={data.bigCoverLogo}/>
             </div>
         )
@@ -60,12 +59,7 @@ export default class SubjectBook extends React.Component{
         return data.long_sub_title || data.introduction
     }
 
-    /**
-     * 书-封面关键词
-     * @param data
-     * @param bookStyle
-     */
-    renderStyle10(data, bookStyle){
+    getTags(data){
         var tags = [];
         this.formatTags(data.keywords).map(function(item, index){
             if(index > 2){
@@ -73,6 +67,30 @@ export default class SubjectBook extends React.Component{
             }
             tags.push(<div key={index}><span key={index}>{item}</span></div>);
         });
+        return tags;
+    }
+
+    getStarRank(data){
+        var rank = parseInt((data.score * 10));
+        var star = (
+            <span className={"star_rank" + ' star_rank_' + rank}>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        );
+        return star;
+    }
+
+    /**
+     * 书-封面关键词
+     * @param data
+     * @param bookStyle
+     */
+    renderStyle10(data, bookStyle){
+
         return (
             <div className="book clearfix">
                 <div className="clearfix">
@@ -86,7 +104,7 @@ export default class SubjectBook extends React.Component{
                         <p className="intro line_2">{this.getIntro(data)}</p>
                     </div>
                 </div>
-                <div className="info tags">{tags}</div>
+                <div className="info tags">{this.getTags(data)}</div>
             </div>
         )
     }
@@ -98,16 +116,6 @@ export default class SubjectBook extends React.Component{
      * @param bookStyle
      */
     renderStyle11(data, bookStyle){
-        var rank = parseInt((data.score * 10));
-        var star = (
-            <span className={"star_rank" + ' star_rank_' + rank}>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-        );
         return (
             <div className="book clearfix">
                 <div className="clearfix">
@@ -118,7 +126,7 @@ export default class SubjectBook extends React.Component{
                         {this.getMark(data)}
                         </p>
                         <p className="info">{data.status} | {data.author}</p>
-                        <p className="info">{star}</p>
+                        <p className="info">{this.getStarRank(data)}</p>
                         <p className="intro line_2">{this.getIntro(data)}</p>
                     </div>
                 </div>
@@ -161,21 +169,16 @@ export default class SubjectBook extends React.Component{
      * @param bookStyle
      */
     renderStyle13(data, bookStyle){
-        //TODO://
         return (
             <div className="book clearfix">
                 <div className="clearfix">
-                    {this.getBookCover(data)}
-                    <div className="info_block">
-                        <p className="name">
-                            {this.getBookName(data)}
-                            {this.getMark(data)}
-                        </p>
-                        <p className="info">{data.status} | {data.author}</p>
-                        {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
-                        <p className="intro line_2">{this.getIntro(data)}</p>
-                    </div>
+                    <p className="name">
+                        {this.getBookName(data)}
+                    </p>
+                    <p className="info">{data.status} | {data.author}</p>
+                    <p className="intro line_2">{this.getIntro(data)}</p>
                 </div>
+                <div className="info tags">{this.getTags(data)}</div>
             </div>
         )
     }
@@ -186,20 +189,15 @@ export default class SubjectBook extends React.Component{
      * @param bookStyle
      */
     renderStyle14(data, bookStyle){
-        //TODO://
         return (
             <div className="book clearfix">
                 <div className="clearfix">
-                    {this.getBookCover(data)}
-                    <div className="info_block">
-                        <p className="name">
-                            {this.getBookName(data)}
-                            {this.getMark(data)}
-                        </p>
-                        <p className="info">{data.status} | {data.author}</p>
-                        {data.dynamicField ? <p className="info dynamic">{data.dynamicField}</p> : null}
-                        <p className="intro line_2">{this.getIntro(data)}</p>
-                    </div>
+                    <p className="name">
+                        {this.getBookName(data)}
+                        {this.getStarRank(data)}
+                    </p>
+                    <p className="info">{data.status} | {data.author}</p>
+                    <p className="intro line_2">{this.getIntro(data)}</p>
                 </div>
             </div>
         )
