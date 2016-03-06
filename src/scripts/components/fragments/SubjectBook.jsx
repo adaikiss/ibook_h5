@@ -5,7 +5,7 @@ import {render} from 'react-dom'
 var defaultThumb = require('../../../images/def_thumb.png')
 
 export default class SubjectBook extends React.Component{
-    static book_styles = [10, 11, 12, 13, 14, 15, 17, 18, 25, 26, 29, 30, 31, 34, 43];
+    static book_styles = [8, 10, 11, 12, 13, 14, 15, 17, 18, 25, 26, 29, 30, 31, 34, 43];
 
     static isBook(style){
         return SubjectBook.book_styles.indexOf(style) != -1;
@@ -82,6 +82,25 @@ export default class SubjectBook extends React.Component{
             </span>
         );
         return star;
+    }
+
+    /**
+     * 书-促销-单行简洁版
+     * @param data
+     * @param bookStyle
+     * @returns {XML}
+     */
+    renderStyle8(data, bookStyle){
+        return (
+            <div className={"book clearfix"}>
+                <div className="clearfix">
+                    <p className="name">
+                        {this.getBookName(data)}
+                        <span className="dynamic">{data.activityName}</span>
+                    </p>
+                </div>
+            </div>
+        )
     }
 
     /**
