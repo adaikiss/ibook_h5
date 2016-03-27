@@ -3,6 +3,7 @@
 import React from 'react'
 import {render} from 'react-dom'
 import SubjectBook from './SubjectBook.jsx'
+import SubjectBlockItem from './SubjectBlockItem.jsx'
 
 export default class SubjectBlock extends React.Component{
 
@@ -23,14 +24,21 @@ export default class SubjectBlock extends React.Component{
 
     getContent(data){
         if(SubjectBook.isBook(data.style)){
-            return this.renderBook(data)
+            return this.renderBook(data);
         }
         var renderer =  this["renderStyle" + data.style];
         if(renderer){
             return renderer.apply(this, [data]);
         }
-        console.debug(data);
+        console.error('Missing style renderer!', data);
         return <div className="subject_block subject_block_placeholder"></div>;
+    }
+
+    handleItemClick(index, event){
+        if(this.props.onClick){
+            this.props.onClick(index, event);
+            return;
+        }
     }
 
     /**
@@ -39,7 +47,7 @@ export default class SubjectBlock extends React.Component{
      * @param needBackgroundColor
      * @returns {{style: {}, text: *}}
      */
-    parseLinkTagName(name, needBackgroundColor){
+    static parseLinkTagName(name, needBackgroundColor){
         var data = {style:{}, text:name};
         //'<{"n":{"c":"#ffffff", "b":"#f47575"}, "st":1}>';
         if(name.startsWith('<{')){
@@ -79,7 +87,9 @@ export default class SubjectBlock extends React.Component{
         var contents = [];
         data.items.map(function (item, index) {
             contents.push (
-                <SubjectBook data={item} bookStyle={data.style} key={index}/>
+                <SubjectBlockItem key={index} onClick={this.handleItemClick.bind(this, index)}>
+                    <SubjectBook data={item} bookStyle={data.style}/>
+                </SubjectBlockItem>
             )
             if(hasHr && index < max){
                 contents.push(<p className="hr" key={'hr' + index}/>);
@@ -101,12 +111,15 @@ export default class SubjectBlock extends React.Component{
         return (
             <div className={"subject_block subject_block_" + data.style}>
                 {data.items.map(function (item, index) {
-                    var style = this.parseLinkTagName(item.name, true);
+                    var style = SubjectBlock.parseLinkTagName(item.name, true);
                     return (
-                        <div className={"link_tag" + (style.marker?' marker':'') + (data.style==24?' subject_title':'')} key={index}>
-                            <p style={style.style}>{style.text}</p>
-                            {style.marker?this.marker_arrow:null}
-                        </div>
+                        <SubjectBlockItem key={index} onClick={this.handleItemClick.bind(this, index)}>
+                            <div
+                                className={"link_tag" + (style.marker?' marker':'') + (data.style==24?' subject_title':'')}>
+                                <p style={style.style}>{style.text}</p>
+                                {style.marker ? this.marker_arrow : null}
+                            </div>
+                        </SubjectBlockItem>
                     )
                 }.bind(this))}
             </div>
@@ -123,11 +136,13 @@ export default class SubjectBlock extends React.Component{
             <div className={"subject_block subject_block_banner subject_block_banner_" + data.items.length}>
                 {data.items.map(function (item, index) {
                     return (
-                        <div className="banner_wrapper" key={index}>
-                            <img src={item.banner_url} style={{height:item.scale * 100 + '%'}}/>
-                        </div>
+                        <SubjectBlockItem key={index} onClick={this.handleItemClick.bind(this, index)}>
+                            <div className="banner_wrapper" key={index}>
+                                <img src={item.banner_url} style={{height:item.scale * 100 + '%'}}/>
+                            </div>
+                        </SubjectBlockItem>
                     )
-                })}
+                }.bind(this))}
             </div>
         )
     }
@@ -138,7 +153,7 @@ export default class SubjectBlock extends React.Component{
      * @returns {XML}
      */
     renderStyle9(data){
-        return this.renderStyle2(data);
+        return this.renderStyle2.apply(this, arguments);
     }
 
     /**
@@ -155,7 +170,7 @@ export default class SubjectBlock extends React.Component{
      * @returns {XML}
      */
     renderStyle24(data){
-        return this.renderStyle2(data);
+        return this.renderStyle2.apply(this, arguments);
     }
 
     /**
@@ -164,7 +179,7 @@ export default class SubjectBlock extends React.Component{
      * @returns {XML}
      */
     renderStyle27(data){
-        return this.renderStyle2(data);
+        return this.renderStyle2.apply(this, arguments);
     }
 
     /**
@@ -173,7 +188,7 @@ export default class SubjectBlock extends React.Component{
      * @returns {XML}
      */
     renderStyle36(data){
-        return this.renderStyle2(data);
+        return this.renderStyle2.apply(this, arguments);
     }
 
     /**
@@ -183,7 +198,7 @@ export default class SubjectBlock extends React.Component{
      */
     renderStyle41(data){
         return (
-            <div className={"subject_block subject_block_" + data.style}>
+            <div className={"subject_block subject_block_" + data.style} onClick={this.handleItemClick.bind(this, -1)}>
                 <div className="clearfix">
                     <div className="cover">
                         <img src={data.cover}/>
@@ -203,7 +218,7 @@ export default class SubjectBlock extends React.Component{
      */
     renderStyle42(data){
         return (
-            <div className={"subject_block subject_block_" + data.style}>
+            <div className={"subject_block subject_block_" + data.style} onClick={this.handleItemClick.bind(this, -1)}>
                 <div className="clearfix">
                     <div className="cover">
                         <img src={data.cover}/>
@@ -224,7 +239,7 @@ export default class SubjectBlock extends React.Component{
      */
     renderStyle45(data){
         return (
-            <div className={"subject_block subject_block_" + data.style}>
+            <div className={"subject_block subject_block_" + data.style} onClick={this.handleItemClick.bind(this, -1)}>
                 <div className="clearfix">
                     <div className="cover">
                         <img src={data.cover}/>

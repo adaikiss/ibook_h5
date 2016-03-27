@@ -63,11 +63,17 @@ export default (function(){
         }
 
         componentWillMount() {
-            Runtime.loadData(Runtime.api.circleSubjects, function(data){
-                if(data.subjects.length > 0){
-                    this.setState({data: data.subjects});
-                }
-            }.bind(this));
+            var queryParams = Utils.getQueryParams(window.location.href);
+            if (queryParams.data !== undefined) {
+                var data = [JSON.parse(decodeURIComponent(queryParams.data))]
+                this.setState({data:data})
+            } else {
+                Runtime.loadData(Runtime.api.circleSubjects, function (data) {
+                    if (data.subjects.length > 0) {
+                        this.setState({data: data.subjects});
+                    }
+                }.bind(this));
+            }
         }
         //
         //renderData(){

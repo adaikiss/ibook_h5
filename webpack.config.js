@@ -6,8 +6,7 @@ var PathRewriterPlugin = require('webpack-path-rewriter');
 module.exports = {
     entry: {
         app: [path.resolve("./src/scripts/app.js")],
-        toolbar:path.resolve("./sample/toolbar.js"),
-        circle:path.resolve("./sample/circle.js")
+        design: [path.resolve("./src/scripts/design.js")]
     },
     output: {
         path: path.resolve("./assets"),
@@ -19,7 +18,7 @@ module.exports = {
             allChunks: true
         }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
+        //new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.DefinePlugin({

@@ -1,0 +1,86 @@
+@import 'main';
+
+html,body,#viewport{
+  height:100%;
+  min-height:100%;
+  background-color:#ccc;
+}
+#viewport{
+  min-height:100%;
+}
+#design-panel{
+  text-align:center;
+  min-height:100%;
+  &>*{
+    text-align:left;
+  }
+}
+#render-panel{
+  min-height:100%;
+  margin:0 auto;
+  display:inline-block;
+  #design-toolbar{
+    .clearfix;
+    padding:5px;
+    color:#fff;
+    .btn{
+      text-align:center;
+      font-size:0.7rem;
+      //width:2rem;
+      height:2rem;
+      display:block;
+      float:left;
+      //background-color:#33acfe;
+      border-radius:0.1rem;
+      margin-right:5px;
+      &:last-child{
+        margin-right:0;
+      }
+    }
+  }
+}
+#device-emulator{
+  .subject;
+  overflow-x:hidden;
+  .template{
+    border:3px dotted transparent;
+    min-height:1.8rem;
+    &:hover{
+      border-color:#ccc;
+      .template_toolbar{
+        display:block;
+      }
+    }
+  }
+  .subject_block{
+    background-color:#FFF;
+  }
+  .template_toolbar{
+    position:relative;
+    width:100%;
+    height:0;
+    display:none;
+    .btn-group{
+      position:absolute;
+      top:0;
+      right:0;
+      z-index:999;
+    }
+  }
+}
+
+.iPhone_6_Plus{
+  width:414px;
+}
+
+.subject-block-item-placeholder-container{
+  >div{
+    padding:5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size:1.5rem;
+    cursor:move;
+    .no-select;
+  }
+}

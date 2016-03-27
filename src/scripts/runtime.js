@@ -1,8 +1,9 @@
 'use strict';
+require('./common.js');
 var UrlTemplate = require('url-template');
 export default (function(window){
     var Runtime = {};
-    if(window.location.hostname == 'localhost' || window.location.hostname == '127.0.0.1'){
+    if(window.location.hostname == 'localhost' || window.location.hostname == '127.0.0.1' || window.location.hostname.startsWith('192.168')){
         Runtime.env = 'dev';
     }else{
         Runtime.env = 'prod';
@@ -38,6 +39,7 @@ export default (function(window){
             }
             $.ajax({
                 dataType: "json",
+                data:{__token__:"haJwcgCic3bNHbCiaW3AomlkzgAo_qCiY27A"},
                 url: url,
                 success: function(result) {
                     var data = result;
@@ -122,7 +124,8 @@ export default (function(window){
 
     Runtime.api = {
         circleNav:{url:Runtime.url.api + "/books/store_nav"},
-        circleSubjects:{url:Runtime.url.api + "/books/store?offset={offset}&count={count}"}
+        circleSubjects:{url:Runtime.url.api + "/books/store?offset={offset}&count={count}"},
+        subjectSerialize:{url:Runtime.url.api + "/inner/serialize?type={type}&ids={ids}&dynamic={dynamic:0}"}
     }
     for(var o in Runtime.api){
         Runtime.api[o].name = o;

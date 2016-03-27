@@ -11,24 +11,6 @@ import Bookshelf from './components/Bookshelf.jsx'
 import Circle from './components/Circle.jsx'
 import NotFound from './components/NotFound.jsx'
 
-//String.startsWith
-if (typeof String.prototype.startsWith != 'function') {
-    String.prototype.startsWith = function (str){
-        return this.lastIndexOf(str, 0) === 0;
-    };
-}
-//Function.bind
-if (!Function.prototype.bind) {
-    Function.prototype.bind = function (fixThis) {
-        var func = this;
-        return function () {
-            return func.apply(fixThis, arguments);
-        };
-    };
-}
-
-function noop(){}
-
 (function(window, document, $, undefined){
     $(function() {
         $(window).resize(function(){

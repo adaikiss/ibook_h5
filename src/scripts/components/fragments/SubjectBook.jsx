@@ -92,7 +92,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle8(data, bookStyle){
         return (
-            <div className={"book clearfix"}>
+            <div className={"book clearfix"} onClick={this.props.onClick}>
                 <div className="clearfix">
                     <p className="name">
                         {this.getBookName(data)}
@@ -111,7 +111,7 @@ export default class SubjectBook extends React.Component{
     renderStyle10(data, bookStyle){
 
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     {this.getBookCover(data)}
                     <div className="info_block">
@@ -136,7 +136,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle11(data, bookStyle){
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     {this.getBookCover(data)}
                     <div className="info_block">
@@ -165,7 +165,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle12(data, bookStyle){
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     {this.getBookCover(data)}
                     <div className="info_block">
@@ -189,7 +189,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle13(data, bookStyle){
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     <p className="name">
                         {this.getBookName(data)}
@@ -210,7 +210,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle14(data, bookStyle){
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     <p className="name">
                         {this.getBookName(data)}
@@ -234,7 +234,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle15(data, bookStyle){
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     <p className="name">
                         {this.getBookName(data)}
@@ -254,7 +254,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle16(data, bookStyle){
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     {this.getBookCover(data)}
                     <div className="info_block">
@@ -284,7 +284,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle17(data, bookStyle){
         return (
-            <div className={"book clearfix"}>
+            <div className={"book clearfix"} onClick={this.props.onClick}>
                 <div className="clearfix">
                     <p className="name">
                         {this.getBookName(data)}
@@ -304,7 +304,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle18(data, bookStyle){
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     {this.getBookCover(data)}
                     <p className="name line_2">{this.getBookName(data)}</p>
@@ -321,7 +321,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle26(data, bookStyle){
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     {this.getBookCover(data)}
                 </div>
@@ -348,7 +348,7 @@ export default class SubjectBook extends React.Component{
             tags.push(<span key={index}>{item}</span>);
         });
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     {this.getBookCover(data)}
                     <div className="info_block">
@@ -373,7 +373,7 @@ export default class SubjectBook extends React.Component{
      */
     renderStyle30(data, bookStyle){
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     {this.getBookCover(data)}
                     <p className="category">{data.category}</p>
@@ -390,7 +390,7 @@ export default class SubjectBook extends React.Component{
     renderStyle31(data, bookStyle){
         //TODO://
         return (
-            <div className="book clearfix">
+            <div className="book clearfix" onClick={this.props.onClick}>
                 <div className="clearfix">
                     {this.getBookCover(data)}
                     <div className="info_block">
