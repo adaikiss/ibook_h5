@@ -139,8 +139,14 @@ export default class SubjectBlock extends React.Component{
                 return '50%';
             case 3:
                 return '50%';
+        }
+        if(total % 2 == 0){
+            return '50%';
+        }
+        if(index == total - 1){
             return '100%';
         }
+        return '50%';
     }
     /**
      * banner
