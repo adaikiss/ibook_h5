@@ -654,11 +654,13 @@ p{
 }
 
 .subject_block_2, .subject_block_27 {
-  .link_tag{
+  .subject_block_item{
     width:33.3%;
-    text-align: center;
     float:left;
     margin:0.5em 0;
+  }
+  .link_tag{
+    text-align: center;
     p{
       text-align: center;
       border:1px solid #aaa;
@@ -908,7 +910,7 @@ p{
   }
 }
 
-.subject_block_42, .subject_block_45{
+.subject_block_42, .subject_block_44, .subject_block_45{
   >div{
     border:1px solid @border_color;
     padding:5px;
@@ -952,6 +954,11 @@ p{
       .subject_content_font;
       line-height:1.5em;
     }
+  }
+}
+.subject_block_44{
+  .info_block{
+    margin-left:0!important;
   }
 }
 .subject_block_45{
