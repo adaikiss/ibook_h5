@@ -503,9 +503,21 @@ p{
   }
 }
 .style_book_square{
-  .book{
+  .subject_block_item{
     float:left;
     width:33.33333%;
+    &:nth-child(3n - 2){
+      .book>div{
+        margin-left:0;
+      }
+    }
+    &:nth-child(3n){
+      .book>div{
+        margin-right:0;
+      }
+    }
+  }
+  .book{
     >div{
       margin:0 auto;
       width:@book_cover_width;
@@ -526,16 +538,6 @@ p{
       //  }
       //}
 
-    }
-    &:nth-child(3n - 2){
-      >div{
-        margin-left:0;
-      }
-    }
-    &:nth-child(3n){
-      >div{
-        margin-right:0;
-      }
     }
   }
 }
