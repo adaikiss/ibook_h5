@@ -259,6 +259,24 @@ export default class SubjectBlock extends React.Component{
     }
 
     /**
+     * 样式块-标题+说明
+     * @param data
+     * @returns {XML}
+     */
+    renderStyle44(data){
+        return (
+            <div className={"subject_block subject_block_" + data.style} onClick={this.handleItemClick.bind(this, -1)}>
+                <div className="clearfix">
+                    <div className="info_block">
+                        <p className="title line_1">{data.items[0].name}</p>
+                        <p className="content line_3">{data.items[1].name}</p>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    /**
      * 样式块-主贴头条样式
      * @param data
      */
