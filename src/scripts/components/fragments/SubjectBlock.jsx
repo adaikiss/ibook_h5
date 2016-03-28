@@ -127,22 +127,41 @@ export default class SubjectBlock extends React.Component{
     }
 
     /**
+     * 计算banner图宽度
+     * @param total
+     * @param index
+     */
+    static getBannerWidth(total, index){
+        switch(total){
+            case 1:
+                return '100%';
+            case 2:
+                return '50%';
+            case 3:
+                return '50%';
+            return '100%';
+        }
+    }
+    /**
      * banner
      * @param data
      * @returns {XML}
      */
     renderStyle4(data){
+        var count = data.items.length;
+        var content = [];
+        data.items.map(function (item, index) {
+            content.push(
+                <SubjectBlockItem style={{width:SubjectBlock.getBannerWidth(count, index)}} key={index} onClick={this.handleItemClick.bind(this, index)}>
+                    <div className="banner" key={index}>
+                        <img src={item.banner_url} style={{height:item.scale * 100 + '%'}}/>
+                    </div>
+                </SubjectBlockItem>
+            )
+        }.bind(this))
         return (
-            <div className={"subject_block subject_block_banner subject_block_banner_" + data.items.length}>
-                {data.items.map(function (item, index) {
-                    return (
-                        <SubjectBlockItem key={index} onClick={this.handleItemClick.bind(this, index)}>
-                            <div className="banner_wrapper" key={index}>
-                                <img src={item.banner_url} style={{height:item.scale * 100 + '%'}}/>
-                            </div>
-                        </SubjectBlockItem>
-                    )
-                }.bind(this))}
+            <div className={"subject_block subject_block_" + data.style}>
+                {content}
             </div>
         )
     }

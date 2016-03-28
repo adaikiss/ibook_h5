@@ -39,7 +39,7 @@ export default (function(window){
             }
             $.ajax({
                 dataType: "json",
-                data:{__token__:"haJwcgCic3bNHbCiaW3AomlkzgAo_qCiY27A"},
+                data:{__token__:""},
                 url: url,
                 success: function(result) {
                     var data = result;

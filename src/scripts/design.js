@@ -48,7 +48,7 @@ function noop(){}
                 item();
             }.bind(this));
         },
-        exportData(){
+        exportData(popup){
             var data = {
                 "channel" : 0,
                 "recommendWords" : "",
@@ -64,6 +64,10 @@ function noop(){}
             };
             this.subjectBlocks.map(subjectBlock=>data.items.push(subjectBlock.data));
             this.books.data.map(book=>data.items.push(book));
+            if(popup){
+                var data_window = window.open("", "专题数据");
+                data_window.document.write(JSON.stringify(data));
+            }
             return data;
         },
         preview(){

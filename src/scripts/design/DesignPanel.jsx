@@ -132,7 +132,7 @@ export default class DesignPanel extends React.Component{
     }
 
     exportData(){
-        STORE.exportData();
+        STORE.exportData(true);
     }
     preview(){
         STORE.preview();
