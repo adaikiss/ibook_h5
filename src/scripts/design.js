@@ -30,8 +30,8 @@ function noop(){}
         subjectBlockItemsEditData:[],
         refs:{
             subjectBlockModal:null,
-            itemEditorModal:null,
-            subjectBlockItemsModal:null,
+            subjectBlockItemEditModal:null,
+            subjectBlockItemsAddModal:null,
             subjectBlockItemsEditModal:null
         },
         observe:function(callback){
@@ -39,8 +39,8 @@ function noop(){}
         },
         register(refs){
             this.refs.subjectBlockModal = refs.subjectBlockModal;
-            this.refs.itemEditorModal = refs.itemEditorModal;
-            this.refs.subjectBlockItemsModal = refs.subjectBlockItemsModal;
+            this.refs.subjectBlockItemEditModal = refs.subjectBlockItemEditModal;
+            this.refs.subjectBlockItemsAddModal = refs.subjectBlockItemsAddModal;
             this.refs.subjectBlockItemsEditModal = refs.subjectBlockItemsEditModal;
         },
         onChange:function(){
@@ -81,9 +81,6 @@ function noop(){}
                 this.onChange();
             }.bind(this));
         },
-        getSubjectBlock:function(index){
-            return this.subjectBlocks[index];
-        },
         removeSubjectBlock:function(data){
             var index = this.subjectBlocks.indexOf(data);
             this.subjectBlocks.splice(index, 1);
@@ -92,49 +89,21 @@ function noop(){}
         editSubjectBlock:function(data){
             Utils.shallowExtend(this.subjectBlockEditorData, {data:data, callback:function(params){this.onChange();}.bind(this), mode:'edit'});
             this.refs.subjectBlockModal.open();
-            //if(refreshItems){
-            //    Runtime.loadData(Runtime.api.subjectSerialize, {type: data.data.itemType, ids:data.params.ids}, function(result){
-            //        data.data.items = result;
-            //        this.onChange();
-            //    }.bind(this));
-            //}else{
-            //    this.onChange();
-            //}
         },
         addSubjectBlock:function(){
             Utils.shallowExtend(this.subjectBlockEditorData, {data:{params:{}, data:{}, uuid:Utils.uuid()}, callback:function(){this.subjectBlocks.push(this.subjectBlockEditorData.data);this.onChange();}.bind(this), mode:'add'});
             this.refs.subjectBlockModal.open();
-            //if(data.params.ids !== ''){
-            //    Runtime.loadData(Runtime.api.subjectSerialize, {type: data.data.itemType, ids:data.params.ids}, function(result){
-            //        data.data.items = result;
-            //        this.onChange();
-            //    }.bind(this));
-            //}else{
-            //    this.onChange();
-            //}
         },
-        parseSubjectBlockData:function(params, data){
-
-        },
-        //addSubjectBlockItem:function(subjectBlockData, params, callback){
-        //    console.debug(params);
-        //    Runtime.loadData(Runtime.api.subjectSerialize, {type: subjectBlockData.data.itemType, ids:params.ids}, function(result){
-        //        result.map(function(item) {
-        //            subjectBlockData.data.items.push(item);
-        //        });
-        //        callback();
-        //    });
-        //},
         addSubjectBlockItem:function(subjectBlockData){
             Utils.shallowExtend(this.subjectBlockItemEditorData, {subjectBlockData:subjectBlockData, itemData:[{}], callback:function(){STORE.onChange();}, mode:'add'});
-            this.refs.itemEditorModal.open();
+            this.refs.subjectBlockItemEditModal.open();
         },
         editSubjectBlockItem:function(subjectBlockData, itemData){
             Utils.shallowExtend(this.subjectBlockItemEditorData, {subjectBlockData:subjectBlockData, itemData:[itemData], callback:function(){STORE.onChange();}, mode:'edit'});
-            this.refs.itemEditorModal.open();
+            this.refs.subjectBlockItemEditModal.open();
         },
         addSubjectBlockItems(subjectBlockData){
-            this.refs.subjectBlockItemsModal.submitCallback(function(params){
+            this.refs.subjectBlockItemsAddModal.submitCallback(function(params){
                 if(params.ids != ''){
                     Runtime.loadData(Runtime.api.subjectSerialize, {type: subjectBlockData.itemType, ids: params.ids}, function (result) {
                         result.map(function (item) {
@@ -153,7 +122,6 @@ function noop(){}
             this.refs.subjectBlockItemsEditModal.submitCallback(function(){
                 var items = subjectBlockData.items;
                 subjectBlockData.items = this.subjectBlockItemsEditData.map(item => {return items[item.id]});
-                console.debug(subjectBlockData);
                 this.onChange();
             }.bind(this)).open();
         },
@@ -161,6 +129,8 @@ function noop(){}
             switch(itemType){
                 case 0:
                     return item.sub_title || item.name;
+                case 2:
+                    return item.name;
                 case 5:
                     return SubjectBlock.parseLinkTagName(item.name).text;
                 default:

@@ -2,35 +2,13 @@
 
 import React from 'react'
 import {render} from 'react-dom'
+import {bookCategories, dynamicTypes, bookFormats} from './Constant'
+
 function handleValueChange(props, event){
     props.data[event.target.name] = event.target.value;
     props.handleValueChange();
 }
-var CATEGORIES = {
-    1 : "现代言情",
-    58 : "现代言情",
-    158 : "现代言情",
-    2 : "古代言情",
-    3 : "玄幻奇幻",
-    4 : "武侠仙侠",
-    5 : "游戏竞技",
-    6 : "幻想言情",
-    7 : "历史军事",
-    8 : "灵异悬疑",
-    9 : "影视剧本",
-    10 : "科幻灵异",
-    11 : "文史传记",
-    12 : "穿越重生",
-    14 : "经管励志",
-    15 : "社科科普",
-    16 : "文学艺术",
-    17 : "都市校园",
-    13 : "都市校园",
-    18 : "教育教辅",
-    161 : "时尚生活",
-    159 : "畅销小说",
-};
-export default function LinkTagForm(props){
+export default function BookForm(props){
     Utils.fallback(props.data, 'bid', '');
     Utils.fallback(props.data, 'bookstore', '1');
     Utils.fallback(props.data, 'name', '');
@@ -101,28 +79,7 @@ export default function LinkTagForm(props){
             <div className="form-group col-sm-6">
                 <label>分类</label>
                 <select name="categoryId" className="form-control" value={props.data.categoryId} onChange={handleValueChange.bind(this, props)}>
-                    <option value="1" >现代言情</option>
-                    <option value="58" >现代言情</option>
-                    <option value="158" >现代言情</option>
-                    <option value="2" >古代言情</option>
-                    <option value="3" >玄幻奇幻</option>
-                    <option value="4" >武侠仙侠</option>
-                    <option value="5" >游戏竞技</option>
-                    <option value="6" >幻想言情</option>
-                    <option value="7" >历史军事</option>
-                    <option value="8" >灵异悬疑</option>
-                    <option value="9" >影视剧本</option>
-                    <option value="10" >科幻灵异</option>
-                    <option value="11" >文史传记</option>
-                    <option value="12" >穿越重生</option>
-                    <option value="14" >经管励志</option>
-                    <option value="15" >社科科普</option>
-                    <option value="16" >文学艺术</option>
-                    <option value="17" >都市校园</option>
-                    <option value="13" >都市校园</option>
-                    <option value="18" >教育教辅</option>
-                    <option value="161" >时尚生活</option>
-                    <option value="159" >畅销小说</option>
+                    {bookCategories.map((bookCategory, index)=>{return <option value={bookCategory.value} key={index}>{bookCategory.text}</option>})}
                 </select>
             </div>
             <div className="form-group col-sm-6">
@@ -134,13 +91,7 @@ export default function LinkTagForm(props){
             <div className="form-group col-sm-6">
                 <label>动态字段类型</label>
                 <select name="dynamicFieldType" className="form-control" value={props.data.dynamicFieldType} onChange={handleValueChange.bind(this, props)}>
-                    <option value="0">没有</option>
-                    <option value="1">点击数</option>
-                    <option value="2">促销额外数据</option>
-                    <option value="3">订购数</option>
-                    <option value="4">书籍分类</option>
-                    <option value="5">书籍字数</option>
-                    <option value="6">书籍投票数</option>
+                    {dynamicTypes.map((dynamicType, index)=>{<option value={dynamicType.value} key={index}>{dynamicType.text}</option>})}
                 </select>
             </div>
             <div className="form-group col-sm-6">
@@ -156,8 +107,7 @@ export default function LinkTagForm(props){
             <div className="form-group col-sm-6">
                 <label>书籍格式</label>
                 <select name="format" className="form-control" value={props.data.format} onChange={handleValueChange.bind(this, props)}>
-                    <option value="0">txt</option>
-                    <option value="1">epub</option>
+                    {bookFormats.map((bookFormat, index)=>{<option value={bookFormat.value} key={index}>{bookFormat.text}</option>})}
                 </select>
             </div>
         </div>

@@ -2,6 +2,8 @@
 
 import React from 'react'
 import {render} from 'react-dom'
+import {linkTagTargets} from './Constant'
+
 function handleValueChange(props, event){
     props.data[event.target.name] = event.target.value;
     props.handleValueChange();
@@ -18,32 +20,7 @@ export default function LinkTagForm(props){
             <div className="form-group col-sm-6">
                 <label>链接目标</label>
                 <select name="contentType" className="form-control" value={props.data.contentType} onChange={handleValueChange.bind(this, props)}>
-                    <option value="0">书籍</option>
-                    <option value="-1">标准书籍</option>
-                    <option value="1">书单</option>
-                    <option value="4">独立专题</option>
-                    <option value="7">综合推荐</option>
-                    <option value="10">促销书籍</option>
-                    <option value="11">包月包</option>
-                    <option value="12">任务</option>
-                    <option value="13">榜单</option>
-                    <option value="14">分类</option>
-                    <option value="15">促销折扣</option>
-                    <option value="17">内部界面</option>
-                    <option value="22">APK下载</option>
-                    <option value="23">网页</option>
-                    <option value="25">内部网页</option>
-                    <option value="26">打开应用市场</option>
-                    <option value="30">纯文字/图片</option>
-                    <option value="32">促销频道</option>
-                    <option value="33">书评频道</option>
-                    <option value="34">求书频道</option>
-                    <option value="35">分享书籍频道</option>
-                    <option value="36">包月频道</option>
-                    <option value="39">导航栏</option>
-                    <option value="40">导航栏内容项</option>
-                    <option value="41">书吧</option>
-                    <option value="42">主贴</option>
+                    {linkTagTargets.map((linkTagTarget, index)=>{return <option value={linkTagTarget.value} key={index}>{linkTagTarget.text}</option>})}
                 </select>
             </div>
             <div className="form-group col-sm-6">

@@ -4,7 +4,6 @@ import {render} from 'react-dom'
 
 import {DropTarget, DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import SubjectBlockItemEditPlaceholder from './SubjectBlockItemEditPlaceholder.jsx'
 import DndItemTypes from './DndItemTypes'
 
 import SubjectBlockTemplate from './SubjectBlockTemplate.jsx'
